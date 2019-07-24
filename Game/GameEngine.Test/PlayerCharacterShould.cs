@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -34,14 +35,30 @@ namespace GameEngine.Test
             Assert.AreEqual(100,playerCharacter.Health);
         }
 
+        public static IEnumerable<object[]> Damages
+        {
+            get
+            {
+                return new List<object[]>
+                {
+                    new object[]{1,99},
+                    new object[]{0,100},
+                    new object[]{100,1},
+                    new object[]{101,1},
+                    new object[]{50,50}
+                };
+            }
+        }
+
         [DataTestMethod]
-        [DataRow(1,99)]
-        [DataRow(0,100)]
-        [DataRow(100,1)]
-        [DataRow(101,1)]
-        [DataRow(50,50)]
+        //[DataRow(1,99)]
+        //[DataRow(0,100)]
+        //[DataRow(100,1)]
+        //[DataRow(101,1)]
+        //[DataRow(50,50)]
+
+        [DynamicData(nameof(Damages))]
         [TestCategory("Player Health")]
-        
         public void TakeDamage(int damage,int expectedHealth)
         {
             var playerCharacter = new PlayerCharacter();
