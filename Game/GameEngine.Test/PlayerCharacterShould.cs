@@ -35,6 +35,7 @@ namespace GameEngine.Test
             Assert.AreEqual(100,playerCharacter.Health);
         }
 
+        //Step 1
         public static IEnumerable<object[]> Damages
         {
             get
@@ -50,6 +51,19 @@ namespace GameEngine.Test
             }
         }
 
+        //Step 2
+        public static IEnumerable<object[]> GetDamages()
+        {
+            return new List<object[]>
+            {
+                new object[]{1,99},
+                new object[]{0,100},
+                new object[]{100,1},
+                new object[]{101,1},
+                new object[]{50,50}
+            };
+        }
+
         [DataTestMethod]
         //[DataRow(1,99)]
         //[DataRow(0,100)]
@@ -57,7 +71,9 @@ namespace GameEngine.Test
         //[DataRow(101,1)]
         //[DataRow(50,50)]
 
-        [DynamicData(nameof(Damages))]
+       // [DynamicData(nameof(Damages))]
+        //[DynamicData(nameof(GetDamages),DynamicDataSourceType.Method)]
+        [DynamicData(nameof(GetDamages),typeof(DamageData), DynamicDataSourceType.Method)]
         [TestCategory("Player Health")]
         public void TakeDamage(int damage,int expectedHealth)
         {
