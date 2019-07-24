@@ -195,5 +195,11 @@ namespace GameEngine.Test
         {
             Assert.IsFalse(playerCharacter.Weapons.Any(w => string.IsNullOrWhiteSpace(w)));
         }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            playerCharacter = null;
+        }
     }
 }
