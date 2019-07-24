@@ -4,13 +4,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace GameEngine.Test
 {
     [TestClass]
+    [TestCategory("Enemy Creation")]
     public class EnemyFactoryShould
     {
         [TestMethod]
         public void NotAllowNullName()
         {
+            Console.WriteLine("Creating enemyFactory");
             var enemyFactory = new EnemyFactory();
 
+            Console.WriteLine("Calling create method");
             Assert.ThrowsException<ArgumentNullException>(() => enemyFactory.Create(null));
         }
 
@@ -33,6 +36,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [Ignore]
         public void CreateNormalEnemyByDefault_NotTypeExample()
         {
             var enemyFactory = new EnemyFactory();

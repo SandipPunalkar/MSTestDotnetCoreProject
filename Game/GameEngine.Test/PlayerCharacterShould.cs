@@ -9,6 +9,7 @@ namespace GameEngine.Test
     public class PlayerCharacterShould
     {
         [TestMethod]
+        [TestCategory("Player Defaults")]
         public void BeInexperiencedWhenNew()
         {
             var playerCharacter = new PlayerCharacter();
@@ -17,6 +18,7 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Defaults")]
         public void NotHaveNickNameByDefault()
         {
             var playerCharacter = new PlayerCharacter();
@@ -25,12 +27,14 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
+        [TestCategory("Player Defaults")]
         public void StartWithDefaultHealth()
         {
             var playerCharacter = new PlayerCharacter();
             Assert.AreEqual(100,playerCharacter.Health);
         }
         [TestMethod]
+        [TestCategory("Player Health")]
         public void TakeDamage()
         {
             var playerCharacter = new PlayerCharacter();
@@ -38,6 +42,7 @@ namespace GameEngine.Test
             Assert.AreEqual(99,playerCharacter.Health);
         }
         [TestMethod]
+        [TestCategory("Player Health")]
         public void TakeDamage_NotEqual()
         {
             var playerCharacter = new PlayerCharacter();
@@ -45,6 +50,7 @@ namespace GameEngine.Test
             Assert.AreNotEqual(100, playerCharacter.Health);
         }
         [TestMethod]
+        [TestCategory("Player Health")]
         public void IncreaseHealthAfterSleeping()
         {
             var playerCharacter = new PlayerCharacter();
