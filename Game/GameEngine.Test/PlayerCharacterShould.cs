@@ -77,7 +77,11 @@ namespace GameEngine.Test
        // [DynamicData(nameof(Damages))]
         //[DynamicData(nameof(GetDamages),DynamicDataSourceType.Method)]
         //[DynamicData(nameof(GetDamages),typeof(DamageData), DynamicDataSourceType.Method)]
-        [DynamicData(nameof(ExternalHealthDamageTestData.TestData),typeof(ExternalHealthDamageTestData))]
+        //[DynamicData(nameof(ExternalHealthDamageTestData.TestData),typeof(ExternalHealthDamageTestData))]
+
+        //Custom data sourse
+        [CsvDataSource("Damage.csv")]
+
         [TestCategory("Player Health")]
         public void TakeDamage(int damage,int expectedHealth)
         { 
