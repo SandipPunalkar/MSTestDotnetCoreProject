@@ -194,9 +194,14 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
-        public void HaveNoEmptyDefaultWepons()
+        public void HaveNoEmptyDefaultWeapons()
         {
-            Assert.IsFalse(playerCharacter.Weapons.Any(w => string.IsNullOrWhiteSpace(w)));
+            //Assert.IsFalse(playerCharacter.Weapons.Any(w => string.IsNullOrWhiteSpace(w)));
+
+            //Custom collection Assert
+            //CollectionAssert.That.AllItemNotNullOrWhitespace(playerCharacter.Weapons);
+            CollectionAssert.That.AllItemSatisfy(playerCharacter.Weapons,w => !string.IsNullOrWhiteSpace(w));
+            
         }
 
         [TestCleanup]
