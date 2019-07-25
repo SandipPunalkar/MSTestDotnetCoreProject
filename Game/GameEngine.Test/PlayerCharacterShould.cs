@@ -18,14 +18,18 @@ namespace GameEngine.Test
         }
 
         [TestMethod]
-        [TestCategory("Player Defaults")]
+        //[TestCategory("Player Defaults")]
+        [PlayerDefaults]
         public void BeInexperiencedWhenNew()
         {
             Assert.IsTrue(playerCharacter.IsNoob);
         }
 
         [TestMethod]
-        [TestCategory("Player Defaults")]
+        //[TestCategory("Player Defaults")]
+
+        //Custom category
+        [PlayerDefaults]
         public void NotHaveNickNameByDefault()
         {
             Assert.IsNull(playerCharacter.Nickname);
