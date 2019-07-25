@@ -97,7 +97,10 @@ namespace GameEngine.Test
         public void IncreaseHealthAfterSleeping()
         {
             playerCharacter.Sleep();
-            Assert.IsTrue(playerCharacter.Health >= 101 && playerCharacter.Health <= 200);
+            //Assert.IsTrue(playerCharacter.Health >= 101 && playerCharacter.Health <= 200);
+
+            //Custom Assert
+            Assert.That.IsRange(playerCharacter.Health,101,200);
         }
 
         [TestMethod]
