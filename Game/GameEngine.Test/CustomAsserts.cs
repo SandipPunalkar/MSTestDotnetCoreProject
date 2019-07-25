@@ -38,5 +38,34 @@ namespace GameEngine.Test
             }
         }
 
+        public static void All<T>(this CollectionAssert collectionAssert,
+            ICollection<T> collection,
+            Action<T> assert)
+        {
+            foreach (var item in collection)
+            {
+                assert(item);
+            }
+        }
+        public static void NotNullOrWhitespace(this StringAssert stringAssert, string actual)
+        {
+            if (string.IsNullOrWhiteSpace(actual))
+            {
+                throw new AssertFailedException("Value is null or white space");
+            }
+        }
+
+        public static void AtLeastOneItemSatisfies<T>(this CollectionAssert collectionAssert,
+            ICollection<T> collection, Predicate<T> predicate)
+        {
+            foreach (var item in collection)
+            {
+                if (predicate(item))
+                {
+                   return;
+                }
+            }
+            throw new AssertFailedException("No item satisfied predicate");
+        }
     }
 }

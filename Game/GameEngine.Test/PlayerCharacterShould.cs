@@ -190,7 +190,10 @@ namespace GameEngine.Test
         [TestMethod]
         public void HaveAtLeastOneKindOfSword()
         {
-            Assert.IsTrue(playerCharacter.Weapons.Any(w => w.Contains("Sword")));
+            //Assert.IsTrue(playerCharacter.Weapons.Any(w => w.Contains("Sword")));
+
+            //Custom collection assert
+            CollectionAssert.That.AtLeastOneItemSatisfies(playerCharacter.Weapons,w => w.Contains("Sword"));
         }
 
         [TestMethod]
@@ -200,8 +203,14 @@ namespace GameEngine.Test
 
             //Custom collection Assert
             //CollectionAssert.That.AllItemNotNullOrWhitespace(playerCharacter.Weapons);
-            CollectionAssert.That.AllItemSatisfy(playerCharacter.Weapons,w => !string.IsNullOrWhiteSpace(w));
-            
+            //CollectionAssert.That.AllItemSatisfy(playerCharacter.Weapons,w => !string.IsNullOrWhiteSpace(w));
+
+            CollectionAssert.That.All(playerCharacter.Weapons, weapon =>
+           {
+               StringAssert.That.NotNullOrWhitespace(weapon);
+               Assert.IsTrue(weapon.Length > 5);
+           });
+
         }
 
         [TestCleanup]
